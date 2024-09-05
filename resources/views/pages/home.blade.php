@@ -57,8 +57,8 @@
 @section('page')
     <section class="top-section h-screen bg-slate-100">
         @include('partials.nav')
-        <section class="flex flex-row w-screen justify-center overflow-hidden">
-            <div class="left-banner px-8 lg:pl-[150px] lg:w-3/6 my-auto h-screen items-center  mt-48 overflow-hidden flex gap-10 flex-col lg:mt-24">
+        <section class="flex flex-row w-screen lg:justify-normal justify-center overflow-hidden">
+            <div class="left-banner px-8 lg:pl-[150px] lg:w-3/6 my-auto h-screen  mt-48 overflow-hidden flex gap-10 flex-col lg:mt-24">
                 <hr class="my-4 hidden lg:inline">
                 <div class="flex flex-col gap-4 lg:gap-3 ">
                     <h1 class="text-4xl md:6xl lg:text-7xl overflow-hidden subpixel-antialiased">HEALTHY</h1>
