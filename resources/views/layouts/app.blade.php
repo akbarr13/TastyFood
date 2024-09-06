@@ -13,9 +13,6 @@
             height: 75vh;
             background-size: 100%;
             background-repeat: no-repeat;
-
-
-
         }
         body {
             visibility: hidden;
