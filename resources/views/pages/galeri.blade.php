@@ -8,13 +8,9 @@
             object-fit: cover;
         }
 
-        .photos img{
+        .photos img {
             object-fit: cover;
 
-        }
-
-        #gallery-list{
-            height: 150vh;
         }
     </style>
 @endsection
@@ -22,42 +18,29 @@
 
 @section('page')
     @include('partials.second_nav', ['title' => 'GALERI KAMI'])
-    <section class="h-screen bg-slate-100 w-screen">
+    <section class=" h-max lg:h-screen bg-slate-100 w-screen">
         <!-- component -->
         <!-- This is an example component -->
-        <div class=" mx-36 py-32">
+        <div class=" mx-2 lg:mx-36 lg:py-32">
 
             <div id="default-carousel" class="relative" data-carousel="static">
                 <!-- Carousel wrapper -->
                 <div class="overflow-hidden relative  rounded-2xl " style="height: 75vh">
                     <!-- Item 1 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <span
-                            class="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl dark:text-gray-800">First
-                            Slide</span>
-                        <img src="{{ asset('assets/images/anna-pelzer-IGfIGP5ONV0-unsplash.jpg') }}"
+
+                        @foreach ($photos as $photo)
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="{{ asset('assets/images/'.$photo->filename) }}"
                             class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="{{ asset('assets/images/ella-olsson-mmnKI8kMxpc-unsplash.jpg') }}"
-                            class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="{{ asset('assets/images/luisa-brimble-HvXEbkcXjSk-unsplash.jpg') }}"
-                            class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
-                    </div>
+
+                        </div>
+
+                        @endforeach
+
+
                 </div>
                 <!-- Slider indicators -->
-                <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 1"
-                        data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-                        data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-                        data-carousel-slide-to="2"></button>
-                </div>
+               
                 <!-- Slider controls -->
                 <button type="button"
                     class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
@@ -88,21 +71,21 @@
             <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
         </div>
     </section>
-    <section id="gallery-list" class="flex justify-center items-center">
-        <div class="photos flex flex-wrap flex-row justify-center items-center gap-8 ">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
-            <img src="{{asset('assets/images/michele-blackwell-rAyCBQTH7ws-unsplash.jpg')}}" class="w-96 h-96 rounded-2xl" alt="">
+    <section id="gallery-list" class="flex h-max justify-center items-center my-24">
+        <div class="photos flex mx-6 flex-wrap flex-row h-max justify-center items-center gap-8 ">
+
+            @foreach ($photos as $photo)
+                <img src="{{ asset('assets/images/'. $photo->filename) }}"
+                    class="w-96 h-96 lg:w-[390px] lg:h-[390px] rounded-2xl" alt="">
+            @endforeach
+
         </div>
 
+
+
     </section>
+    <div class="flex flex-row gap-6 justify-center">
+
+        {{$photos->links()}}
+    </div>
 @endsection
